@@ -1,6 +1,6 @@
 # See, Do, Believe
 
-© Assunta Scotto. Created 2026-11-12. Version 2 published 2026-11-13.
+© Assunta Scotto. Created 2026-11-12. Version 3 published 2026-11-13.
 
 An all-English practice app for the three P's of culture: products, practices and perspectives. Three stages: recognize them, get them out of sources, then research on your own.
 
