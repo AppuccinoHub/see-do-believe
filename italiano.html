@@ -1,0 +1,678 @@
+<!doctype html>
+<!-- © Assunta Scotto · See, Do, Believe Italiano · created 2026-11-13 · version 1 · published 2026-11-16 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>See, Do, Believe Italiano</title>
+<meta name="author" content="© Assunta Scotto">
+<meta name="copyright" content="© Assunta Scotto. See, Do, Believe Italiano. Created 2026-11-13.">
+<!-- © Assunta Scotto · See, Do, Believe Italiano · created 2026-11-13 · version 1 · human- and AI-driven work directed by Assunta Scotto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow column. Home lists three stages; each activity opens alone, one round at a time. */
+:root{
+  --bg:#ffffff; --fg:#0f172a; --muted:#475569; --line:#cbd5e1; --soft:#f1f5f9;
+  --accent:#1d4ed8; --on-accent:#ffffff; --tint:#eff6ff;
+  --good:#0b6b3a; --bad:#b42318; --lamp:#f5c542;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1220; --fg:#e6ebf5; --muted:#a8b3c7; --line:#33415a; --soft:#141d30;
+    --accent:#8ab4ff; --on-accent:#0b1220; --tint:#16233d;
+    --good:#7fd9a6; --bad:#ff9b8f; --lamp:#f5c542; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1220; --fg:#e6ebf5; --muted:#a8b3c7; --line:#33415a; --soft:#141d30;
+  --accent:#8ab4ff; --on-accent:#0b1220; --tint:#16233d;
+  --good:#7fd9a6; --bad:#ff9b8f; --lamp:#f5c542; color-scheme:dark;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55}
+.wrap{max-width:44rem;margin:0 auto;padding-block:16px 32px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:18px}
+h1{margin:0;font-size:1.5rem;line-height:1.2;font-weight:700}
+h2{margin:0;font-size:1.2rem;line-height:1.25;font-weight:700;text-wrap:balance}
+h3{margin:0;font-size:1rem;font-weight:700}
+p{margin:0}
+.muted{color:var(--muted)} .small{font-size:.875rem}
+.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.gap-lg{gap:16px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.box{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.box.soft{background:var(--soft)}
+.box.accent{border:2px solid var(--accent)}
+.read{font-size:1.05rem;line-height:1.65}
+.box ol,.box ul{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px}
+button{font-family:inherit;font-size:1rem;cursor:pointer}
+.btn{min-height:48px;border-radius:10px;border:2px solid var(--accent);background:var(--bg);color:var(--accent);font-weight:600;padding:8px 14px}
+.btn.solid{background:var(--accent);color:var(--on-accent)}
+.btn.quiet{border-color:var(--line);color:var(--fg);font-weight:500}
+.btn[disabled]{opacity:.45;cursor:default}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;width:100%;min-height:60px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);padding:10px 14px}
+.card b{display:block;font-weight:600}
+.card .n{flex:none;font-size:.85rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.card .n.done{color:var(--good)}
+.q{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--line)}
+.q:first-child{border-top:0;padding-top:0}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.opts.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{min-height:48px;text-align:left;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);padding:8px 12px;display:flex;justify-content:space-between;gap:8px;align-items:center;font-weight:500}
+.opts.three .opt,.opts.two .opt{justify-content:center;text-align:center;font-weight:600;flex-direction:column;gap:2px;padding:8px 4px}
+.opt[disabled]{cursor:default}
+.opt.sel{border-color:var(--accent);background:var(--tint)}
+.opt.ok{border-color:var(--good);background:var(--tint)}
+.opt.no{border-style:dashed;color:var(--muted)}
+.tag{flex:none;font-size:.8rem;font-weight:700}
+.tag.ok{color:var(--good)} .tag.no{color:var(--bad)} .tag.pick{color:var(--accent)}
+.fb{font-size:.95rem;border-left:0;padding:10px 12px;border-radius:8px;background:var(--tint)}
+.fb b{color:var(--accent)}
+.fb:focus{outline:none}
+label{font-weight:600;font-size:.95rem}
+textarea,input[type=text]{font-family:inherit;font-size:1rem;color:var(--fg);background:var(--bg);border:1px solid var(--muted);border-radius:8px;padding:10px;width:100%;box-sizing:border-box}
+textarea{min-height:110px;resize:vertical}
+textarea.short{min-height:84px}
+.rounds{display:flex;gap:8px;flex-wrap:wrap}
+.rounds .btn{min-width:48px;padding:8px}
+.rounds .btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.chart{display:flex;flex-direction:column;gap:8px}
+.chart .row{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr) 3rem;gap:8px;align-items:center;font-size:.9rem}
+.chart .track{height:18px;background:var(--line);border-radius:4px}
+.chart .fill{height:18px;background:var(--accent);border-radius:4px}
+.chart .v{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.src{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.src{grid-template-columns:minmax(0,1fr)}}
+.pic{width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.pic .ink{stroke:var(--fg);fill:none;stroke-width:1.5}
+.pic .body{fill:var(--muted)} .pic .wood{fill:var(--line);stroke:var(--fg);stroke-width:1}
+.pic .lamp{fill:var(--lamp)} .pic .wall{fill:var(--bg);stroke:var(--fg);stroke-width:1.5}
+.pic text{fill:var(--fg);font-family:var(--sans);font-size:9px;font-weight:700}
+footer{border-top:1px solid var(--line);padding-top:12px;font-size:.8rem;color:var(--muted)}
+#copy-out{min-height:160px}
+@media print{.noprint{display:none!important} .box{border-color:#999}}
+</style>
+</head>
+<body>
+<div class="wrap" data-author="© Assunta Scotto" data-created="2026-11-13" data-version="1" data-page="italiano">
+  <header class="bar noprint">
+    <div>
+      <div class="eyebrow">Products · Practices · Perspectives</div>
+      <h1>See, Do, Believe <span class="muted">· Italiano</span></h1>
+    </div>
+    <div class="bar">
+      <span class="small muted" id="saved" aria-live="polite"></span>
+      <button type="button" class="btn quiet" id="home-btn" hidden>All activities</button>
+    </div>
+  </header>
+  <main id="app"></main>
+  <footer>© Assunta Scotto · See, Do, Believe Italiano · 2026-11-13. The regions are real. The towns, people, surveys and sources in this practice are made up.</footer>
+</div>
+
+<script>
+/* © Assunta Scotto · See, Do, Believe Italiano · 2026-11-13 · version 1 */
+(function(){
+"use strict";
+try{console.info("© Assunta Scotto · See, Do, Believe Italiano · 2026-11-13 · version 1");}catch(e){}
+
+var PPP=["Product","Practice","Perspective"];
+var AB=["Source A","Source B"];
+var ABC=["Source A","Source B","Source C"];
+var ABCD=["Source A","Source B","Source C","Source D"];
+var S4=["Sentence 1","Sentence 2","Sentence 3","Sentence 4"];
+var S5=["Sentence 1","Sentence 2","Sentence 3","Sentence 4","Sentence 5"];
+var PIC='<svg class="pic" viewBox="0 0 320 170" role="img" aria-label="Two streets at dinner time. Street A: one long table in the street, six people eating together from shared bowls under a string of lights. Street B: three separate houses, each with one lit window and one person inside, and a delivery bike outside.">'
++'<text x="12" y="16">VIA A</text><text x="176" y="16">VIA B</text>'
++'<line class="ink" x1="160" y1="6" x2="160" y2="164"/>'
++'<path class="ink" d="M10 34 Q80 52 150 34"/>'
++'<circle class="lamp" cx="30" cy="40" r="3"/><circle class="lamp" cx="55" cy="44" r="3"/><circle class="lamp" cx="80" cy="46" r="3"/><circle class="lamp" cx="105" cy="44" r="3"/><circle class="lamp" cx="130" cy="40" r="3"/>'
++'<g class="body"><circle cx="30" cy="84" r="7"/><rect x="23" y="92" width="14" height="14" rx="4"/><circle cx="62" cy="84" r="7"/><rect x="55" y="92" width="14" height="14" rx="4"/><circle cx="96" cy="84" r="7"/><rect x="89" y="92" width="14" height="14" rx="4"/><circle cx="130" cy="84" r="7"/><rect x="123" y="92" width="14" height="14" rx="4"/></g>'
++'<rect class="wood" x="14" y="104" width="132" height="14" rx="3"/>'
++'<circle class="wall" cx="40" cy="111" r="5"/><circle class="wall" cx="80" cy="111" r="7"/><circle class="wall" cx="120" cy="111" r="5"/>'
++'<g class="body"><circle cx="46" cy="134" r="7"/><rect x="39" y="142" width="14" height="14" rx="4"/><circle cx="112" cy="134" r="7"/><rect x="105" y="142" width="14" height="14" rx="4"/></g>'
++'<g><path class="wall" d="M172 70 L192 50 L212 70 V130 H172 Z"/><rect class="lamp" x="182" y="82" width="20" height="20"/><circle class="body" cx="192" cy="93" r="5"/>'
++'<path class="wall" d="M220 70 L240 50 L260 70 V130 H220 Z"/><rect class="lamp" x="230" y="82" width="20" height="20"/><circle class="body" cx="240" cy="93" r="5"/>'
++'<path class="wall" d="M268 70 L288 50 L308 70 V130 H268 Z"/><rect class="lamp" x="278" y="82" width="20" height="20"/><circle class="body" cx="288" cy="93" r="5"/></g>'
++'<line class="ink" x1="166" y1="130" x2="314" y2="130"/>'
++'<g><circle class="ink" cx="226" cy="150" r="7"/><circle class="ink" cx="252" cy="150" r="7"/><path class="ink" d="M226 150 L238 138 L252 150 M238 138 H246"/><rect class="wood" x="244" y="126" width="14" height="12"/></g>'
++'</svg>';
+
+/* Question format.
+   a: index of the right option (or a list of indexes when pick is set).
+   o: options for this question. An option written as [text, feedback] shows that feedback when it is chosen wrongly.
+   fix: keep the options in the written order (fixed labels). Options with o and no fix are shuffled on each device.
+   no: feedback for wrong fixed-label choices, by index.
+   d: a close call. The student chooses, writes one sentence, then presses Check.
+   pick: the student must choose this many options, then presses Check. */
+var ACTS=[
+{id:"learn",stage:1,type:"learn",title:"Learn the three P's",blurb:"What each P is, in plain words."},
+{id:"sort",stage:1,type:"mc",title:"Sort a text",blurb:"Read a short Italian text and label each phrase.",opts:PPP,
+ hint:"Quick test: can you touch it, can you watch people do it, or is it the why?",
+ intro:"Read the Italian text. Then choose the P for each phrase.",
+ rounds:[
+ {text:"A Valserena, un paese del Trentino, ogni sabato c'è il mercato in piazza. I contadini vendono formaggio di malga e mele. Le famiglie fanno la spesa insieme e poi bevono un caffè al bar. Qui dicono che comprare dal vicino è un modo di rispettarlo.",
+  qs:[{q:"«Le famiglie fanno la spesa insieme»",a:1,why:"Shopping together is something people do. You could watch them."},
+      {q:"«formaggio di malga»",a:0,why:"Cheese is a thing people make. You can point to it."},
+      {q:"«comprare dal vicino è un modo di rispettarlo»",a:2,why:"It is a belief, and «dicono che» introduces it. It explains why people shop at the market."},
+      {q:"«bevono un caffè al bar»",a:1,why:"It is an action, and part of the Saturday routine."}]},
+ {text:"A Pietrabianca, in Puglia, le nonne fanno le orecchiette a mano davanti alla porta di casa. I bambini guardano e imparano. La domenica tutta la famiglia mangia allo stesso tavolo. Per la gente del paese, una ricetta è un regalo che passa da una generazione all'altra.",
+  qs:[{q:"«una ricetta è un regalo che passa da una generazione all'altra»",a:2,why:"It says what a recipe means to people. «Per la gente del paese» tells you whose belief it is."},
+      {q:"«le orecchiette»",a:0,why:"The pasta is a thing people make."},
+      {q:"«I bambini guardano e imparano»",a:1,why:"Watching and learning is something people do."},
+      {q:"«tutta la famiglia mangia allo stesso tavolo»",a:1,why:"Eating together is an action, repeated every Sunday."}]},
+ {text:"A Portoluna, in Sardegna, i pescatori dipingono il nome della madre sulla barca. Ogni mattina portano il pesce al porto e ne regalano una parte agli anziani. Nel paese si dice che il mare dà a tutti e quindi nessuno deve restare senza.",
+  qs:[{q:"«ne regalano una parte agli anziani»",a:1,why:"Giving is an action. The reason behind it is the perspective."},
+      {q:"«il mare dà a tutti e quindi nessuno deve restare senza»",a:2,why:"It is a belief, and it explains why the fishermen give fish away. «Deve» is a value word."},
+      {q:"«la barca»",a:0,why:"A boat is an object people make and use."},
+      {q:"«dipingono il nome della madre sulla barca»",a:1,why:"Painting the name is an action. The painted boat would be the product."}]}
+ ]},
+{id:"fact",stage:1,type:"mc",title:"Fact or belief?",blurb:"A fact is not a perspective. Tell them apart in Italian.",opts:["Fact","Perspective"],
+ hint:"Could you check it and prove it true or false? Then it is a fact. Is it what people think is right or important? Then it is a perspective.",
+ intro:"A fact can be checked. A perspective is what people believe or value. Choose one for each Italian sentence.",
+ rounds:[{qs:[
+  {q:"La sagra del paese esiste dal 1950.",a:0,why:"You can check a date."},
+  {q:"Un ospite va sempre accolto con qualcosa da mangiare.",a:1,why:"«Va accolto» means \"should be welcomed\". It says what is right, so it is a belief."},
+  {q:"Il pranzo della domenica è il momento più importante della settimana.",a:1,why:"«Più importante» ranks things by value. Nobody can measure that."},
+  {q:"Alla festa partecipano circa duemila persone.",a:0,why:"A number can be counted and checked."},
+  {q:"È meglio perdere con onore che vincere con l'inganno.",a:1,why:"«È meglio» compares two values. Nobody can prove it true or false."},
+  {q:"In questo paese molte famiglie cenano dopo le otto.",a:0,why:"This one is tricky. It describes what people do, and a survey could check it. It is a practice, stated as a fact. It does not say why."},
+  {q:"Lo stadio ha diecimila posti.",a:0,why:"A size can be measured."},
+  {q:"Gli anziani meritano il posto migliore a tavola.",a:1,why:"«Meritano» is a value word. Words like «si deve», «bisogna» and «merita» often signal a perspective."}
+ ]}]},
+{id:"why",stage:1,type:"mc",title:"Match the why",blurb:"Pick the belief that explains the practice.",
+ hint:"A perspective is a belief or value. A price, a rule or a habit is a fact, not a perspective.",
+ intro:"Each Italian sentence describes a practice. Choose the perspective that best explains it.",
+ rounds:[{qs:[
+  {q:"A casa di Lucia, chi arriva all'ora di pranzo trova sempre un piatto in più sulla tavola.",a:0,o:["A visitor should never leave a home hungry.",["The family always cooks too much food.","That would be a habit or an accident. It does not explain why a plate is set for a guest."],["Food costs very little in that town.","A price is a fact, not a belief."]],why:"The extra plate is the product, setting it is the practice, and hospitality is the reason."},
+  {q:"Nel quartiere, i vicini lasciano le chiavi di casa alla signora del primo piano quando partono.",a:1,o:[["Locksmiths in the city are expensive.","A cost is a fact."],"Neighbors can be trusted like family.",["The woman downstairs is always home.","That may be true. It is a fact about her, not a value."]],why:"Handing over your keys is trust in action."},
+  {q:"Il giorno della laurea, tutta la famiglia accompagna lo studente, anche i nonni e gli zii.",a:2,o:[["The university requires families to attend.","A rule would be a fact, and the text mentions no rule."],["Grandparents and uncles have free time.","Having time does not explain choosing to come."],"One person's success belongs to the whole family."],why:"The whole family comes because the achievement is felt as shared."},
+  {q:"Al bar, molti clienti pagano un caffè in più per una persona che non può permetterselo.",a:0,o:["People should look after strangers in need.",["Coffee in that bar is very cheap.","A price is a fact."],["Customers there like to show off.","That is a judgment about people, with nothing to support it."]],why:"The customer never meets the person who drinks the coffee. That is care for a stranger."},
+  {q:"In paese, quando muore qualcuno, i vicini portano da mangiare alla famiglia per una settimana.",a:1,o:[["Families in mourning forget how to cook.","That describes a problem, not a value, and nothing supports it."],"Nobody should have to face grief alone.",["The town has no restaurants or shops.","That would be a fact about the town."]],why:"The food is the product, bringing it is the practice, and this belief is the reason."}
+ ]}]},
+{id:"listen",stage:1,type:"mc",title:"Listen for the P's",blurb:"Hear a short Italian text and find the P's by ear.",
+ hint:"Listen again. Things are products, actions are practices, and the reason is the perspective.",
+ intro:"Press Play and listen to the Italian. You can play it as often as you need. Then answer.",
+ rounds:[
+ {audio:"A Fontechiara, in Toscana, in agosto tutto il paese cena in strada. Ogni famiglia porta un piatto e lo mette al centro della tavolata. Nessuno si siede vicino ai propri parenti. Qui dicono che un vicino è un parente che hai scelto.",
+  qs:[{q:"Which is a product?",a:0,o:["Il piatto che ogni famiglia porta","Tutto il paese cena in strada","Un vicino è un parente che hai scelto"],why:"The dish is a thing someone makes."},
+      {q:"Which is a practice?",a:1,o:["La tavolata","Nessuno si siede vicino ai propri parenti","Un vicino è un parente che hai scelto"],why:"It is a rule of behavior that people follow."},
+      {q:"Which is the perspective?",a:2,o:["Ogni famiglia porta un piatto","Tutto il paese cena in strada","Un vicino è un parente che hai scelto"],why:"«Qui dicono che» introduces a belief."}]},
+ {audio:"A Brenzolo, in Veneto, la biblioteca ha uno scaffale in piazza, senza bibliotecario. Chi prende un libro ne lascia un altro. Nessuno controlla. La bibliotecaria dice che la fiducia si impara usandola.",
+  qs:[{q:"Which is a product?",a:1,o:["Chi prende un libro ne lascia un altro","Lo scaffale dei libri in piazza","La fiducia si impara usandola"],why:"The shelf is an object, and putting it in the square was a choice."},
+      {q:"Which is a practice?",a:0,o:["Chi prende un libro ne lascia un altro","Lo scaffale dei libri","La bibliotecaria"],why:"It is something people do, every time."},
+      {q:"Which is the perspective?",a:2,o:["La biblioteca ha uno scaffale","Nessuno controlla","La fiducia si impara usandola"],why:"This belief explains why nobody checks."}]}
+ ]},
+
+{id:"picture",stage:2,type:"mc",title:"Read a picture",blurb:"A drawing and its Italian caption. The caption changes everything.",
+ hint:"A picture shows things and actions on one evening. Read the caption to find out which evening.",
+ intro:"Look at the drawing. Then read the artist's caption in Italian. Then answer.",
+ rounds:[{pic:true,text:"Didascalia dell'artista: «Via A, la sera della festa di fine estate. Via B, un martedì sera di novembre.»",
+  qs:[{q:"Read the caption. What does it change?",a:1,o:[["Nothing. The drawing shows what it shows.","The caption tells you when each scene happens. That changes what you can compare."],"The two streets are shown on very different evenings.",["It proves that Via A is the friendlier street.","A party night against a November Tuesday is not a fair test of friendliness."]],why:"«La festa di fine estate» is one special night. «Un martedì sera di novembre» is an ordinary one.",
+       d:{label:"In one sentence: why is this comparison unfair?",model:"Via A is shown during a yearly party and Via B on an ordinary weekday, so the picture compares a special night with a normal one."}},
+      {q:"Which claim can you still make about Via A?",a:0,o:["On the night of its party, neighbors eat at one table.",["People in Via A eat together on most evenings.","The caption says this is one special night."],["People in Via A are closer than people in Via B.","Closeness is a feeling, and the two nights cannot be compared."]],why:"Say what the picture shows, on the night it shows."},
+      {q:"What would you need in order to compare the two streets fairly?",a:2,o:[["A larger drawing with much more detail","More detail of an unfair comparison is still unfair."],["A caption written by a different person","A new caption does not change which evenings were drawn."],"Both streets on the same kind of evening"],why:"A fair comparison changes one thing at a time."},
+      {q:"The artist chose a party for one street and a cold Tuesday for the other. What do you do with that?",a:1,o:[["Use it as proof that Via A is the happier street.","The choice of evening is the artist's. It is not evidence about the streets."],"Note it as the artist's choice, and check a second source.",["Set the drawing aside, because the artist took a side.","Every source has a point of view. You name it and still use what the source shows."]],why:"One picture is one person's view. Use it, name the view, and confirm it somewhere else."}],
+  write:[{id:"pic-w",label:"Using the caption: what can you say about each street, and what can you not say?",model:"I can say that Via A holds a street party at the end of summer where neighbors share one table, and that on one November evening people in Via B ate at home. I cannot say which street is closer or what either street does on a normal day."}]}]},
+
+{id:"chart",stage:2,type:"mc",title:"Read a chart",blurb:"Italian charts. What a number proves, suggests, or cannot say.",
+ hint:"A chart counts what the people who were asked said. Check how far each sentence goes beyond that. Read the small print.",
+ intro:"Read the chart and the small print under it, both in Italian. Then answer.",
+ rounds:[
+ {chart:{title:"Con chi pranzi la domenica?",note:"Sondaggio tra 180 abitanti di Roccalta (Abruzzo), a cura della biblioteca comunale, marzo 2025.",rows:[["Con tutta la famiglia",58],["Solo con chi vive con me",29],["Da solo/a o fuori casa",13]]},
+  lead:"For each sentence, decide: does the chart prove it, only suggest it, or have nothing to say about it?",
+  opts:["Proves it","Suggests it","Cannot say"],
+  qs:[{q:"Most people in Roccalta have Sunday lunch with the whole family.",a:1,no:{0:"The survey asked 180 people, not the whole town.",2:"The survey is about this town, so it does point that way. It only falls short of proof."},why:"180 people are a sample. A sample can point toward the whole town. It cannot prove it."},
+      {q:"More than half of the people asked have Sunday lunch with the whole family.",a:0,no:{1:"No need to hold back. 58 percent of the people asked said exactly this.",2:"Look at the top bar: «Con tutta la famiglia»."},why:"This sentence stays inside the survey: the people asked, and what they said."},
+      {q:"People in Roccalta think Sunday lunch keeps a family together.",a:2,no:{0:"The chart asks «con chi». Nobody was asked why.",1:"A fair guess, but it is yours. The chart has no reasons in it."},why:"The question was «Con chi pranzi?». It counts a practice and no belief."},
+      {q:"About three in ten of the people asked eat only with the people they live with.",a:0,no:{1:"Do the math: 29 percent is close to three in ten.",2:"Look at the middle bar and turn the percent into a fraction."},why:"29 percent is about three in ten. Same number, different words."},
+      {q:"Young people in Roccalta are giving up Sunday lunch.",a:2,no:{0:"The chart gives no ages and only one date.",1:"Nothing here points to age or to change over time."},why:"To talk about young people you need ages. To show change you need two dates. This chart has neither."},
+      {q:"You need the perspective behind Sunday lunch, and you have time for one more source. Which do you choose?",a:1,o:[["A new survey of 1,800 residents with the same question","More people answering the same question gives you a stronger number, and still no reason."],"A local radio program where residents explain what it means",["A food magazine's list of the best Sunday recipes","Recipes are products. You asked for the reason behind the practice."]],why:"Perspectives come from people explaining themselves.",
+       d:{label:"In one sentence: why is the bigger survey not the answer?",model:"A bigger survey only counts the practice more exactly; I need people saying why they do it."}}]},
+ {chart:{title:"Perché compri al mercato rionale?",note:"Sondaggio tra 120 clienti del mercato di Rivafonda (Liguria), a cura dell'Associazione dei commercianti del mercato, giugno 2025.",rows:[["Per incontrare gente",46],["Per la qualità dei prodotti",34],["Per i prezzi",20]]},
+  qs:[{q:"Which P does this chart come closest to?",a:2,fixp:true,no:{0:"The market is a product, but the chart does not count things.",1:"Going to the market is a practice. But look at the question: «Perché».",},why:"It counts the reasons people give. Stated reasons are as close as a chart gets to a perspective."},
+      {q:"Read the small print in Italian. Who ran the survey?",a:0,o:["The market's own traders, who gain if it looks loved",["The town council, which has no interest either way","Read the note again: «a cura dell'Associazione dei commercianti del mercato»."],["A university, which makes the numbers more reliable","Read the note again. No university is named."]],why:"«A cura di» tells you who is responsible for a source. Here it is the people who sell at the market."},
+      {q:"The survey asked «clienti del mercato». Who is missing?",a:1,o:[["Customers who are under 18 years old","Possible, but the note does not say so. One gap is certain: look at who was asked."],"People who do not shop at the market at all",["Nobody. 120 answers are enough for a town.","The size is fine. Who was asked is the problem."]],why:"Everyone asked had already chosen to come. People who stay away were never heard."},
+      {q:"Which sentence could you safely write in a project?",a:2,o:[["Most customers come to the market to meet people.","46 percent is not most. Most means more than half."],["In Rivafonda, people care more about company than prices.","That jumps from 120 customers to a whole town, and from a reason to a ranking of values."],"Almost half of the customers asked said they come to meet people."],why:"It keeps the number honest and says who was asked.",
+       d:{label:"In one sentence: what is wrong with the most tempting wrong answer?",model:"It sounds like a strong conclusion, but it goes far past 120 customers at one market."}}]}
+ ]},
+
+{id:"search",stage:2,type:"mc",title:"Fix the search",blurb:"Search in Italian. Every fix looks reasonable; one works best.",
+ hint:"A good search names the place, the thing, and what you want to know about it. Ask what kind of page each search would bring back.",
+ intro:"Each search is too weak. Choose the Italian search that would bring back what you asked for.",
+ rounds:[{qs:[
+  {q:"You want to know what families in Sicily eat on Christmas Eve. Your search: «Sicilia cibo»",a:1,o:[["migliori ristoranti Sicilia Natale","This finds places to eat out, not what families do at home."],"cena della vigilia di Natale in Sicilia tradizioni di famiglia",["ricetta siciliana di Natale facile e veloce","A recipe gives you a product. You asked about a tradition."]],why:"It names the place, the occasion and what you want to know."},
+  {q:"You want to know why a town still holds its historic horse race. Your search: «palio»",a:2,o:[["palio storia date e vincitori","Dates and winners are facts. You asked for a reason, and reasons come from people."],["palio biglietti orari programma","This finds tickets and timetables."],"palio perché è importante per i contradaioli intervista"],why:"«Perché» and «intervista» pull up perspectives, and «contradaioli» is the word insiders use for themselves."},
+  {q:"You typed your search in English and every result is in English. What do you type instead?",a:0,o:["tradizioni del matrimonio in Calabria racconti",["wedding traditions Calabria Italy in Italian","Still English words. Search engines match the language you type."],["matrimonio Calabria wedding traditions","Half and half brings back tourist pages written for foreigners."]],why:"Search in Italian, with Italian words, and you reach pages written by and for the community."},
+  {q:"You want to learn about the masks a town makes for carnival. Your search, «maschere di carnevale», gives you only shops.",a:1,o:[["maschere di carnevale artigianali originali","Shops use those exact words. You will get more shops."],"maschere di carnevale storia artigiani tradizione",["maschere di carnevale immagini","You will see the product. You will not learn anything about it."]],why:"Words like «storia» and «tradizione» bring back pages that explain, not pages that sell."},
+  {q:"Which words would you add to a search to find what people believe, not what they do?",a:2,o:[["«come si fa»","That finds a practice: how something is done."],["«orari e prezzi»","Timetables and prices are facts."],"«significato per gli abitanti»"],why:"«Significato» asks what something means, and «per gli abitanti» asks for the insiders' answer."},
+  {q:"You found a useful fact on Italian Wikipedia. What next?",a:0,o:["Open the note at the bottom and judge the original source",["Cite Wikipedia, with the date you consulted it","Honest, but anyone can edit the page. Your reader needs the source behind it."],["Find the same fact on another site and cite that","The second site may have copied Wikipedia. Follow the fact back to where it began."]],why:"Wikipedia is a map. The «Note» section takes you to a source you can read, judge and cite.",
+   d:{label:"In one sentence: why is finding the fact on a second website not enough?",model:"Two websites can repeat the same mistake if one copied the other, so I need the place where the fact first came from."}}
+ ]}]},
+
+{id:"trust",stage:2,type:"mc",title:"Which source do you trust?",blurb:"Two Italian sources. Both have a strength and a flaw.",
+ hint:"Check four things: who wrote it, when, why they wrote it, and what evidence they give. Then ask what the question needs.",
+ intro:"Read both sources in Italian. Neither is perfect. The best one depends on the question.",
+ rounds:[
+ {topic:"La festa del pane di Colleverde (Marche)",src:[["Source A","Pagina del sito del museo civico, scritta dalla storica del museo. Cita i documenti dell'archivio comunale. Ultimo aggiornamento: 1998."],["Source B","Post di quest'anno sul blog di una fornaia. La sua famiglia partecipa alla festa da quattro generazioni. Non cita documenti, ma racconta molti ricordi di famiglia."]],
+  qs:[{q:"Which detail in Source A tells you how the historian knows what she writes?",a:1,o:[["«scritta dalla storica del museo»","Her title tells you who she is. Look for what tells you how she knows."],"«Cita i documenti dell'archivio comunale»",["«Ultimo aggiornamento: 1998»","The date tells you when, not how she knows."]],why:"A source that shows its own sources can be checked."},
+      {q:"Which is better for the year the festival began?",a:0,o:AB,fix:true,no:{1:"Family memories are valuable, but memory moves dates. The historian shows documents."},why:"A founding year does not change, so the old update does not hurt. The documents decide it."},
+      {q:"Which is better for what the festival means to bakers today?",a:1,o:AB,fix:true,no:{0:"A page last updated in 1998 cannot tell you what bakers feel now."},why:"She is inside the tradition and writing now. That is a first-hand perspective."},
+      {q:"The baker writes that the festival has existed «da sempre». The museum says 1931. What do you write?",a:2,o:[["The festival began in 1931, so the blog is unreliable.","The date is likely 1931. Her words are still evidence: they show how the tradition feels to her family."],["The festival has always existed, as her family knows.","A family memory is not a record. Without a document, the museum's date is stronger."],"The museum dates it to 1931; one family feels it is timeless."],why:"You keep the documented date and the family's view, and you say which is which.",
+       d:{label:"In one sentence: why keep the baker's «da sempre» at all, if the museum is probably right?",model:"It is not a reliable date, but it shows a perspective: her family feels the festival has always been part of their life."}}]},
+ {topic:"Il nuovo parcheggio in piazza a Calamura (Sicilia)",src:[["Source A","Commento anonimo su un social, tre giorni fa: «Tutti in paese odiano il nuovo parcheggio.» Ha 3.000 «mi piace»."],["Source B","Articolo di un giornale locale del mese scorso. Riporta le parole di quattro abitanti, con nome e cognome: due favorevoli e due contrari. Il proprietario del giornale è anche il costruttore del parcheggio."]],
+  qs:[{q:"Which is better for what residents think?",a:1,o:AB,fix:true,no:{0:"«Mi piace» show that a comment spread. They do not show who clicked or where those people live."},why:"It names people and shows more than one view. The owner's interest is a reason to read carefully, not a reason to throw it out."},
+      {q:"Which single word in Source A should make you careful?",a:0,o:["«Tutti»",["«anonimo»","That is the description of the source, and it matters too. But look inside the quotation for the word that claims too much."],["«odiano»","A strong word, but one person may truly hate it. The trouble is who is said to hate it."]],why:"Words like «tutti», «sempre» and «nessuno» are rarely true, and one anonymous person cannot speak for a town."},
+      {q:"How should you use Source B, now that you know who owns the newspaper?",a:2,o:[["Leave it out, because the owner built the car park.","Then you lose four named voices. Name the conflict and let your reader judge."],["Use it as it is, because it quotes both sides.","Quoting both sides is good. Your reader still deserves to know who chose the quotes."],"Use the residents' words, and say who owns the paper."],why:"You do not hide the conflict and you do not throw away the evidence.",
+       d:{label:"In one sentence: what do you lose if you leave Source B out completely?",model:"I would lose the only named residents I have, on both sides, and be left with an anonymous comment."}}]},
+ {topic:"Come mangiano le famiglie in una regione",src:[["Source A","Ricerca universitaria del 1997. I ricercatori hanno visitato 250 famiglie in tutta la regione per un anno intero."],["Source B","Servizio di un telegiornale di quest'anno su un sondaggio online di un'azienda di consegne a domicilio. Hanno risposto 6.000 persone."]],
+  qs:[{q:"Which is better for what families do today?",a:2,o:[["Source B, because it is recent and 6,000 is a large number","Recent, yes. But these people chose to answer an online poll from a delivery company. That group is not the region."],["Source A, because researchers went into real homes","The method is strong. But 1997 tells you about 1997."],"Neither is enough alone. Look for a recent source with nothing to sell."],why:"One is strong but old. The other is new but leans. Sometimes the right move is to keep looking.",
+       d:{label:"In one sentence: which flaw worried you more, the old date or the poll's audience, and why?",model:"The poll's audience worried me more, because a study can be honestly old, but a poll that mostly reaches delivery customers gives a tilted picture of today."}},
+      {q:"«Un'azienda di consegne a domicilio» ran the poll. How could it lean one way without anyone lying?",a:0,o:["People who order delivery are the likeliest to see the poll.",["Companies usually adjust their numbers before publishing.","That is an accusation without evidence. Look for a way the poll could lean honestly."],["6,000 answers are too few to describe a whole region.","The number is fine. Who answered is the issue."]],why:"A poll reaches some people more than others. That tilts the result, even when every answer is true."},
+      {q:"What is Source A still good for?",a:1,o:[["Describing families today, since habits change slowly","You would be guessing. That is exactly what a new source has to confirm."],"Showing how things were, so you can describe change",["Nothing. A study that old cannot be cited.","Old is not useless. Say the year and use it for then."]],why:"An older source is evidence of change. Say the year when you use it."}]}
+ ]},
+
+{id:"lines",stage:2,type:"mc",title:"Read between the lines",blurb:"Nobody says «noi crediamo». Find the belief anyway.",
+ hint:"Look for what people give up, what they refuse, and what they do when nobody makes them. That is where beliefs show.",
+ intro:"Nobody in these Italian texts says \"we believe\". The beliefs are there anyway. Read slowly, then answer.",
+ rounds:[
+ {text:["A Roccalta, in Abruzzo, c'è un solo bar. Tre anni fa un'azienda ha offerto a Gino, il proprietario, di mettere quattro grandi schermi nella sala, per le partite e la pubblicità. Gli avrebbero dato più di quanto guadagna con i caffè. Gino ha detto di no. «Qui i vecchi vengono a giocare a carte» ha spiegato al giornale locale. «Con gli schermi accesi non parlerebbe più nessuno.»",
+   "Sua figlia Marta, che lavora con lui, non era d'accordo. «Con quei soldi potevamo rifare la cucina e assumere una persona» dice. «Un bar chiuso non serve a nessuno.» Oggi il bar è ancora aperto, senza schermi. La domenica pomeriggio i tavoli sono pieni, ma pochi ordinano più di un caffè."],
+  qs:[{q:"Which detail is the strongest evidence of what Gino believes?",a:0,o:["He refused money worth more than his coffee sales.",["His is the only bar in the whole of Roccalta.","That is a fact about the town, not a choice he made."],["Older customers come to his bar to play cards.","That is what customers do. His belief shows in what he gave up to protect it."]],why:"A belief shows most clearly in what someone gives up for it."},
+      {q:"«Con gli schermi accesi non parlerebbe più nessuno.» What does Gino think a bar is for?",a:1,o:[["It is a business that should avoid new technology.","He says nothing against technology. He names what would be lost: conversation."],"It is a place where people talk to one another.",["It is a quiet place where old people can rest.","Card players talking are not quiet. He is protecting talk, not silence."]],why:"He does not defend the cards or the old customers. He defends people speaking to each other.",
+       d:{label:"In one sentence: state Gino's perspective in your own words.",model:"A bar exists to bring people together, and that is worth more than extra income."}},
+      {q:"Marta disagrees with her father. What does she value?",a:2,o:[["Earning as much money as she possibly can","Read what she would do with the money: a kitchen and a new job. Her aim is the bar's survival."],["Modernizing the bar to attract young people","She never mentions young people."],"Keeping the bar alive, so it can go on serving people"],why:"Both want the bar to serve the town. They disagree about what puts it at risk."},
+      {q:"Read the last sentence again: «i tavoli sono pieni, ma pochi ordinano più di un caffè». Whose argument does it support?",a:1,o:[["Gino's: the tables are full of people.","Read the second half of the sentence."],"Both: the bar is full, and it earns very little.",["Marta's: the customers hardly spend.","Read the first half of the sentence."]],why:"The word «ma» joins two facts. One supports the father and the other supports the daughter.",
+       d:{label:"In one sentence: why did the writer end the text with this detail?",model:"It shows that each of them is partly right, so the reader cannot simply pick a winner."}}]},
+ {text:["A Montefosco, in Umbria, i negozi chiudono dalle 12.30 alle 16. Un ingegnere che si è trasferito da Milano l'anno scorso ha scritto al giornale: «Nel 2025 non è possibile che io non possa comprare il pane all'una.» La settimana dopo ha risposto la proprietaria della merceria: «All'una io mangio con mio marito e i miei figli. Lo faceva mia madre e lo faceva mia nonna. Il pane si compra la mattina.»",
+   "Il sindaco ha proposto un compromesso: un solo negozio aperto a turno. I commercianti hanno votato: undici contrari, quattro favorevoli. Il forno però adesso apre alle 15.30, mezz'ora prima degli altri."],
+  qs:[{q:"The shop owner never says «la famiglia è importante». Where is her belief?",a:0,o:["In what she does at one o'clock, and always has",["In her advice to buy bread in the morning","That is practical advice. The belief is in the reason she closes."],["In the fact that she runs a sewing shop","What she sells has nothing to do with it."]],why:"She answers a complaint about shopping with a sentence about lunch. That tells you what comes first for her."},
+      {q:"«Lo faceva mia madre e lo faceva mia nonna.» What does this sentence add?",a:2,o:[["Her family has always owned that same shop.","She says they ate together. She does not say they owned the shop."],["She thinks old habits are better than new ones.","She does not compare old and new. She says where the habit comes from."],"The closing is inherited, not her personal preference."],why:"She presents lunch as something handed down, which is why one letter will not move her.",
+       d:{label:"In one sentence: what tense is «faceva», and why does it matter here?",model:"It is the imperfetto, which shows a repeated habit in the past, so she presents lunch together as something her family has always done."}},
+      {q:"Eleven traders voted no and four voted yes. What can you say?",a:1,o:[["The town is against the engineer's proposal.","Traders voted. Customers and other residents were not asked."],"Most traders want to keep closing; a few would change.",["The traders are split almost evenly on closing.","Eleven to four is not close."]],why:"Report who voted and how. Do not let fifteen traders stand for a town."},
+      {q:"The bakery now opens half an hour earlier. What does that detail show?",a:0,o:["The practice is shifting a little, though the vote said no.",["The baker now agrees with the engineer from Milan.","Thirty minutes is not agreement, and 3:30 is still not one o'clock."],["The result of the traders' vote was simply ignored.","The compromise was rejected and no shop stays open at lunch. One baker moved his own hours."]],why:"Practices rarely change by vote. They move in small steps while the belief stays in place."}]}
+ ]},
+
+{id:"clash",stage:2,type:"mc",title:"When sources disagree",blurb:"Three Italian sources, three stories. What can you still say?",
+ hint:"Ask of each source: how do they know, and what do they gain? Then look for what all of them agree on.",
+ intro:"Three sources in Italian, one tradition, three stories. Decide what you can still say, and what you cannot.",
+ rounds:[
+ {topic:"La corsa dei carri di Pietrabianca (Puglia)",src:[["Source A","Sito turistico del Comune: «Da oltre 600 anni i carri corrono per le vie di Pietrabianca la prima domenica di maggio.» Nessun autore, nessuna fonte."],["Source B","Opuscolo dell'associazione di storia locale, 2018: «Il primo documento che parla della corsa è un registro parrocchiale del 1842. Gli anziani dicono che è molto più antica, ma non abbiamo trovato prove.»"],["Source C","Intervista di quest'anno a un abitante di 81 anni: «Mio nonno correva da ragazzo. Diceva che correva anche suo nonno. Nessuno l'ha inventata, c'è sempre stata.»"]],
+  qs:[{q:"How old is the race? Choose the claim you can defend.",a:1,o:[["It is over 600 years old, as the town itself states.","The tourism site gives no author and no source, and a big number helps it attract visitors."],"It is documented from 1842 and may well be older.",["It began in 1842, when the parish register recorded it.","A first record is not a first event. The society itself says it may be older."]],why:"You state what is documented and leave room for what is not.",
+       d:{label:"In one sentence: what would have to be found to prove the race is older than 1842?",model:"A dated document from before 1842 that mentions the race, such as an older parish or town record."}},
+      {q:"Count the generations in Source C. How far back does his family's memory reach?",a:0,o:["Roughly to the first half of the 1800s",["About 600 years, which matches the website","Do the count: him, his grandfather, and that grandfather's grandfather. That is far short of 600 years."],["Only to his grandfather's youth, about 1900","He reports one step further back: «correva anche suo nonno»."]],why:"His family's memory reaches about as far back as the oldest document, and no further. Neither supports 600 years."},
+      {q:"Which words in Source B show that its authors are careful?",a:2,o:[["«Gli anziani dicono che è molto più antica»","That reports what others say. The care is in what comes next."],["«Il primo documento che parla della corsa»","This states what they found. Look for where they admit what they did not find."],"«ma non abbiamo trovato prove»"],why:"A source that says what it could not prove is one you can trust on what it does claim."},
+      {q:"«Nessuno l'ha inventata, c'è sempre stata.» What is this sentence good evidence of?",a:1,o:[["The fact that the race has no known founder","He does not know of one. That is not the same as there being none."],"How the tradition feels to people who grew up with it",["The age of the race, since he is the oldest source","He is the oldest person. His statement still gives no date."]],why:"As a fact it is weak. As a perspective it is first-hand and valuable."}]},
+ {topic:"Le case rosa di Portoluna (Sardegna)",src:[["Source A","Rivista di viaggi, 2023: «Le celebri case rosa di Portoluna portano fortuna ai pescatori, secondo un'antica credenza.» Il giornalista è rimasto in paese due giorni."],["Source B","Un muratore di Portoluna, intervistato da una radio regionale: «Mio padre usava il rosa perché la calce con la terra rossa costava meno. Adesso la gente se lo aspetta, e continuiamo.»"],["Source C","Piano del Comune per il centro storico, 2022: «Il rosa delle case esprime l'identità della nostra comunità di mare.» Il piano chiede fondi alla Regione per ridipingere il lungomare."]],
+  qs:[{q:"Why are the houses pink? Which answer can you defend?",a:2,o:[["An old belief about luck, since forgotten by residents","Only a visitor of two days says so, and he names nobody who told him."],["Cheap red earth; the other reasons were invented later","The builder speaks for his father's time. What the color means to people now may be something else."],"The sources give different reasons, which may have changed over time"],why:"A practice can outlive its first reason and pick up a new meaning.",
+       d:{label:"In one sentence: how can the builder and the council both be telling the truth?",model:"The pink may have started because it was cheap and later become a sign of identity, so each source describes a different moment."}},
+      {q:"Which source is closest to the practice itself?",a:1,o:ABC,fix:true,no:{0:"A visitor of two days is the farthest from it.",2:"The council writes about the houses. The builder paints them."},why:"He does the work and learned it from his father. That is first-hand."},
+      {q:"Which phrase in Source A should make you careful?",a:0,o:["«secondo un'antica credenza»: nobody is named",["«Le celebri case rosa»: fame proves nothing","True, but that is decoration. The claim about a belief is the one with no source."],["«portano fortuna ai pescatori»: luck is not real","Whether luck exists is not your question. Your question is whether people there believe it, and who says so."]],why:"A perspective needs a holder. «Secondo un'antica credenza», with nobody named, is a warning sign."},
+      {q:"«Il piano chiede fondi alla Regione.» How does that affect the council's statement about identity?",a:1,o:[["It shows the statement was written to get the funds.","You cannot see motives. A group can believe something and benefit from it."],"It may be sincere and also useful to them. Say both.",["It has no effect. A council speaks for its town.","A council speaks for itself first. Residents may see it differently."]],why:"Name the interest without calling it a lie."}]}
+ ]},
+
+{id:"rank",stage:2,type:"mc",title:"Best source for the question",blurb:"Four Italian sources. The best one changes with the question.",
+ hint:"No source is best for everything. Match what the source can show to what the question asks.",
+ intro:"Four sources in Italian on one topic. Which is best depends on what you are asking, and the question will change.",
+ rounds:[
+ {topic:"La raccolta delle olive a Calamura (Sicilia)",src:[["Source A","Rapporto della cooperativa agricola, 2024: numero di famiglie e di giornate di raccolta, con il metodo usato per contarle."],["Source B","Video del 2023 di una studentessa di cinema: 20 minuti di raccolta nei campi, senza commento."],["Source C","Lettera a un quotidiano, 2025, di un produttore di olio: «Perché la raccolta a mano non deve sparire.»"],["Source D","Tesi di laurea, 2012: interviste a 25 raccoglitori sui motivi per cui tornano ogni anno."]],
+  qs:[{q:"Your question: how many families take part in the harvest? Which source is best?",a:0,o:ABCD,fix:true,no:{1:"A video shows people working. It cannot count families.",2:"A letter argues. It does not measure.",3:"Twenty-five interviews give you reasons, not totals."},why:"It counted, recently, and says how."},
+      {q:"New question: what does the work of the harvest look like? Which source is best now?",a:1,o:ABCD,fix:true,no:{0:"The report gives totals. It does not show what anyone does.",2:"He describes the harvest in order to defend it. You would see only what helps his case.",3:"Pickers describe their reasons. For actions, watching beats being told."},why:"Practices are best seen. «Senza commento» means nobody is telling you what to think about what you see."},
+      {q:"New question: why do people come back to pick every year? Where do you start?",a:2,o:[["Source C: recent, and written by an insider","He is one voice with oil to sell. Use him, but not as your starting point."],["Source A: recent, with a clearly stated method","A count has no reasons in it."],"Source D: many voices, though from 2012"],why:"Reasons from 25 people show a range. The date is a weakness you can name and work around.",
+       d:{label:"In one sentence: Source D is from 2012. How would you deal with that?",model:"I would use it for the range of reasons people gave and say the year, then look for a newer source to see whether those reasons still hold."}},
+      {q:"The producer writes: «Tutti sanno che l'olio raccolto a mano è il migliore.» How do you use that sentence?",a:1,o:[["As evidence of what people in Calamura think","He says «tutti». He can only speak for himself."],"As his view, quoted with his name and what he sells",["Not at all, since he profits from hand-picked oil","He knows the harvest from inside. His view is evidence of a perspective, as long as you label it."]],why:"A source with a stake is still a source. The label is what makes it honest."},
+      {q:"You may cite only two sources, and your project must show a practice and a perspective. Which two?",pick:2,a:[0,1],o:["Source B, the video «senza commento»","Source D, the interviews with 25 pickers",["Source A, the cooperative's count of families and days","Solid numbers, but a count shows neither what people do nor why."],["Source C, the oil producer's letter to the newspaper","It gives a perspective, but one voice with a product to sell. The interviews give you a range."]],why:"The video shows the practice, and the interviews give reasons from many people."}]}
+ ]},
+
+{id:"deep",stage:3,type:"mc",title:"Read in depth",blurb:"Longer Italian texts, close to AP level. The beliefs are under the surface.",
+ hint:"Read the quotations twice. Look at small words like «anche», «ma» and «credo che». They carry the speaker's position.",
+ intro:"These Italian texts are longer and closer to AP level. Read each one twice before you answer.",
+ rounds:[
+ {text:["A Calamura, in Sicilia, metà delle case resta chiusa per undici mesi all'anno. I proprietari vivono a Torino, in Germania, in Belgio. Tornano ad agosto, per la festa del patrono, e per tre settimane il paese raddoppia.",
+   "Chi è rimasto non sempre li accoglie con entusiasmo. «Vogliono che tutto sia come lo ricordano» dice Rosalia, che gestisce l'unico negozio di alimentari. «Ma noi qui ci viviamo anche a gennaio.» Suo cugino Salvo, emigrato a Stoccarda più di trent'anni fa, la vede diversamente: «Benché io abiti lontano, questa è casa mia. Pago le tasse sulla casa, mando soldi per la festa. Credo che il paese sia anche nostro.»",
+   "Quest'anno il comitato della festa ha discusso se spostare la processione a luglio, quando fa meno caldo. La proposta è stata bocciata. Nessuno ha detto il motivo ad alta voce, ma tutti lo sapevano: a luglio gli emigrati non ci sono."],
+  qs:[{q:"The committee refused to move the procession. What does that decision reveal?",a:1,o:[["The town prefers to hold its festival in the heat.","Nobody prefers heat. Ask who would be missing in July."],"The town still counts the emigrants as part of itself.",["The committee is run by the people who left.","The text does not say who sits on it."]],why:"The town accepted a worse date so that the people who left could be there.",
+       d:{label:"In one sentence: nobody said the reason aloud. How do you know it?",model:"The last sentence gives it: in July the emigrants are away, so moving the date would leave them out."}},
+      {q:"Rosalia says: «Ma noi qui ci viviamo anche a gennaio.» What is her point?",a:0,o:["Those who stay carry the town all year, not just in August.",["Winter in Calamura is long, cold and hard.","She is not talking about weather. She is comparing eleven months with three weeks."],["The emigrants ought to come back and live there.","She does not ask them to return. She asks whose town it is."]],why:"January stands for the months when the houses are closed and the town depends on those who remain."},
+      {q:"Salvo says: «Credo che il paese sia anche nostro.» Why does the word «anche» matter?",a:2,o:[["He means the town belongs to the emigrants first.","«Anche» means also. He adds himself. He does not replace anyone."],["He is unsure whether the town is really his.","The caution is in «credo che», and it is polite. «Anche» does a different job."],"He claims a share of the town, not the whole of it."],why:"One small word shows that he is asking to be included, not to take over."},
+      {q:"Rosalia and Salvo disagree. About what?",a:1,o:[["About whether the festival should take place","Neither of them questions the festival."],"About who gets to decide what the town should be",["About whether emigrants should pay house taxes","Salvo mentions taxes as proof of belonging. Rosalia never disputes them."]],why:"Both belong. The question between them is whose idea of the town counts.",
+       d:{label:"In one sentence: what value do Rosalia and Salvo share?",model:"Both feel they belong to Calamura and care about what it becomes."}},
+      {q:"Which sentence could you write in a project?",a:0,o:["In this text, residents and emigrants both claim the town, in different ways.",["Sicilians who emigrate never lose their roots.","One man in one made-up town cannot stand for millions of people."],["Small Sicilian towns resent emigrants who return.","One shopkeeper said one thing, and the committee's vote points the other way."]],why:"It reports both positions and stays inside the text."}]},
+ {text:["Sopra Valserena, in Trentino, c'è un rifugio che la famiglia Dalmaso gestisce da tre generazioni. Non ha il wifi, e sul menù ci sono quattro piatti. Ogni estate qualche turista si lamenta nelle recensioni: «Possibile che nel 2025 non ci sia nemmeno il wifi?»",
+   "Elena Dalmaso, 34 anni, ha studiato economia a Trento ed è tornata. Molti pensavano che avrebbe cambiato tutto. Invece ha aggiunto una sola cosa: un quaderno all'ingresso, dove chi passa scrive da dove viene. «Mio nonno diceva che in montagna si arriva stanchi e si riparte leggeri» racconta. «Non so se sia vero per tutti. So che chi vuole il wifi può trovarlo a valle.»",
+   "L'azienda turistica della provincia sostiene che il rifugio «perde clienti». Elena non lo nega. «È probabile che abbiano ragione» dice. «Dipende da che cosa si intende per perdere.»"],
+  qs:[{q:"Elena studied economics and changed almost nothing. What does that suggest?",a:0,o:["Keeping the hut as it is was a choice, not ignorance.",["She did not learn very much during her studies.","Nothing supports that. She knows what the tourist board says, and she answers it."],["Her family did not allow her to change anything.","The text says many expected her to change everything. It does not say anyone stopped her."]],why:"She had the training to modernize and decided not to. That makes it a decision."},
+      {q:"«In montagna si arriva stanchi e si riparte leggeri.» What belief is in the grandfather's sentence?",a:2,o:[["Walking uphill is tiring and downhill is easy.","Read «leggeri» as more than physical. You leave lighter in mind."],["Tourists carry too much in their backpacks.","It is not about luggage."],"The mountain should take a weight off your shoulders."],why:"«Stanchi» and «leggeri» describe a change in the person, not in the backpack.",
+       d:{label:"In one sentence: how does this belief explain the missing wifi?",model:"If the hut is meant to free people from their everyday load, a connection would bring that load back up the mountain."}},
+      {q:"Elena says: «Non so se sia vero per tutti.» What does that tell you about her as a source?",a:1,o:[["She does not really believe her grandfather.","She runs the hut as he did. She doubts that everyone agrees, not that he was right."],"She speaks for her family and admits the limit.",["She is unsure, so her view is weak evidence.","Admitting a limit makes a source more trustworthy, not less."]],why:"A speaker who says how far her claim goes is easier to quote honestly."},
+      {q:"«Dipende da che cosa si intende per perdere.» What is Elena doing in this sentence?",a:0,o:["Accepting the fact and questioning what it measures",["Denying that the hut is losing any customers","She says they are probably right: «È probabile che abbiano ragione»."],["Avoiding the question, since she has no answer","She answers it. She agrees with the number and challenges the word."]],why:"She agrees about the customers. She disagrees about whether that is a loss.",
+       d:{label:"In one sentence: what might the hut gain by \"losing\" some customers?",model:"It keeps the kind of place and the kind of guest the family wants, even if fewer people come."}},
+      {q:"The tourist board and Elena disagree. Which P do they disagree about?",a:2,fixp:true,no:{0:"Both can see the same hut and the same menu.",1:"Both know what the hut does and does not offer."},why:"They agree on the facts. They disagree about what a mountain hut is for. That is a perspective."}]}
+ ]},
+
+{id:"flaw",stage:3,type:"mc",title:"Find the weak claim",blurb:"Italian evidence, a student's English paragraph. One sentence says too much.",
+ hint:"Check each sentence against the Italian evidence. Watch for words like all, always, because and proves, and for numbers that grew.",
+ intro:"A student wrote each paragraph from the Italian evidence shown. One sentence claims more than the evidence gives. Find it, then rewrite it.",
+ rounds:[
+ {evid:["Sondaggio della biblioteca comunale di Roccalta: il 58% dei 180 abitanti intervistati pranza la domenica con tutta la famiglia.","Intervista a un'abitante, Agnese Di Carlo, 61 anni: «La domenica a tavola è l'unico momento in cui i miei figli mi raccontano qualcosa.»"],
+  sents:["In Roccalta, a library survey found that 58% of the 180 residents asked have Sunday lunch with the whole family.","One resident, Agnese Di Carlo, says Sunday lunch is the only time her children tell her anything.","This shows that Italians eat together on Sunday because they want to stay close to their children.","Other interviews would be needed to know whether her neighbors share that reason."],
+  qs:[{q:"Which sentence claims more than the evidence gives?",a:2,o:S4,fix:true,no:{0:"It gives the number and says who was asked. That is careful.",1:"It reports one person's words as one person's words.",3:"It admits a limit. That is a strength, not a weakness."},why:"It goes from 180 people in one town to all Italians, and from one mother's reason to everyone's.",
+       d:{label:"Rewrite the sentence you chose so that the evidence supports it.",model:"Her answer suggests that, for some residents of Roccalta, Sunday lunch is valued as a time when parents and children talk."}},
+      {q:"The weak sentence stretched the evidence in two directions. Which two?",a:1,o:[["From a survey to an interview, and from past to present","Both sources are used correctly in Sentences 1 and 2."],"From one town to a country, and from one person to all",["From lunch to dinner, and from Sunday to every day","The paragraph stays with Sunday lunch."]],why:"A project about a community must stay the size of its evidence."}]},
+ {evid:["Opuscolo dell'associazione di storia locale, 2018: la corsa dei carri di Pietrabianca si svolge la prima domenica di maggio. Il primo documento che ne parla è del 1842.","Sito turistico del Comune, senza autore: la corsa ha «oltre 600 anni».","Un abitante di 81 anni, in un'intervista: «C'è sempre stata.»"],
+  sents:["Pietrabianca's cart race is held on the first Sunday of May.","The oldest document that mentions it dates from 1842.","The race has existed for over 600 years, which proves how proud the town is of its history.","An 81-year-old resident says that it «c'è sempre stata»."],
+  qs:[{q:"Which sentence claims more than the evidence gives?",a:2,o:S4,fix:true,no:{0:"The booklet states this.",1:"It says \"oldest document\", which is exactly what the booklet supports.",3:"It reports his words as his words."},why:"It takes the weakest source's number as fact, then builds a belief on top of it.",
+       d:{label:"Rewrite the sentence you chose so that the evidence supports it.",model:"The town's tourism site says the race is over 600 years old, but the oldest document is from 1842; one resident speaks of it as something that has always existed."}},
+      {q:"That sentence had two problems. One was the unsupported number. What was the other?",a:0,o:["It explained the town's feelings with nobody saying so.",["It left out the name of the 81-year-old resident.","That concerns Sentence 4, and it does not affect the claim."],["It used \"proud\", a word too informal for a project.","The word is fine. The trouble is that no source says anything about pride."]],why:"A perspective has to come from people. You cannot produce one from a date."}]},
+ {evid:["Sondaggio dell'Associazione dei commercianti del mercato di Rivafonda tra 120 clienti del mercato: il 46% viene per incontrare gente, il 34% per la qualità dei prodotti, il 20% per i prezzi."],
+  sents:["A survey by the Rivafonda market traders' association asked 120 customers why they shop at the market.","Almost half said they come to meet people.","Only one in five named prices.","So for the people of Rivafonda, company matters more than money.","The survey was run by the market's own traders, among their customers."],
+  qs:[{q:"Which sentence claims more than the evidence gives?",a:3,o:S5,fix:true,no:{0:"It says who asked whom.",1:"46 percent is almost half.",2:"20 percent is one in five.",4:"It tells the reader where the numbers come from. That is honest."},why:"It jumps from 120 customers to a whole town, and from reasons for shopping to a ranking of values.",
+       d:{label:"Rewrite the sentence you chose so that the evidence supports it.",model:"Among these customers, meeting people was a more common reason than price, which suggests the market has a social role for the people who use it."}},
+      {q:"Sentence 5 weakens the student's own evidence. Should it stay?",a:2,o:[["No. It makes the whole paragraph less convincing.","Convincing is not the goal. A reader who finds the gap alone will trust you less."],["No. It belongs in the list of sources and nowhere else.","The list says who. The paragraph should say why that matters for this claim."],"Yes. Readers should know who collected the numbers, and from whom."],why:"Showing the limits of your evidence makes the rest of your paragraph easier to trust.",
+       d:{label:"In one sentence: who was never asked in this survey, and why does that matter?",model:"People who do not shop at the market were never asked, so the survey cannot tell us what the town as a whole values."}}]}
+ ]},
+
+{id:"chain",stage:3,type:"write",title:"Build the chain",blurb:"Start from an Italian saying or quotation and build the three P's.",
+ intro:"Each prompt starts from Italian. Write your answer in English first. Then press \"Show a model answer\" and compare. There is more than one right answer.",
+ items:[
+  {id:"ch1",label:"Perspective: «L'ospite è sacro.» Write one product and one practice that could show this belief.",model:"Product: the best room or the good tablecloth kept for visitors. Practice: offering coffee or food the moment someone walks in, and refusing to let a guest help clear the table."},
+  {id:"ch2",label:"Proverb: «Chi lascia la strada vecchia per la nuova, sa quel che lascia e non sa quel che trova.» State the perspective in your own words. Then write one practice that could go with it.",model:"Perspective: what you already know is safer than change. Practice: a family keeps the same trade, the same shop or the same recipe for generations."},
+  {id:"ch3",label:"A craftsman says: «Il lavoro fatto bene non ha fretta.» Write one product and one practice.",model:"Product: a pair of handmade shoes, or a wheel of cheese aged for two years. Practice: an apprentice spends years learning beside a master before working alone."},
+  {id:"ch4",label:"Now start from a product: «una panchina davanti a ogni porta di casa». Write one practice and one perspective that could go with it.",model:"Practice: in the evening neighbors sit outside and talk across the street. Perspective: the street is a shared room, and neighbors are part of daily life."},
+  {id:"ch5",label:"Hard choice. A town can pay for only one: restoring «il vecchio lavatoio», the public wash-house that nobody has used for fifty years, or a new bus that takes teenagers to the nearest high school. Choose one. Then name the perspective behind your choice AND the perspective behind the other choice.",model:"I would pay for the bus. The belief behind that: a town's first duty is to give its young people a future. The belief behind the wash-house: a town that erases the places where its grandparents lived and worked loses its memory. Both are real values, which is why people in the same town can disagree."},
+  {id:"ch6",label:"Two people, one family. Il padre: «Il negozio è della famiglia da ottant'anni. Non si vende.» La figlia: «Se lo vendo, posso pagare l'università ai miei figli. Anche questo è pensare alla famiglia.» Name each person's perspective. Then decide: do they disagree about the value, or about the practice?",model:"Father: a family stays itself by keeping what it inherited. Daughter: you serve the family by investing in the next generation. They disagree about the practice. The value is the same for both: the family comes first. Her word «anche» shows she knows it."}
+ ]},
+{id:"find",stage:3,type:"find",title:"Find your own",blurb:"Choose an Italian topic, search in Italian, and record what you find.",
+ intro:"Pick a community in Italy and a topic you are curious about. Do not use music, and do not use your exam project topic. Search in Italian, for yourself."}
+];
+
+var STAGES=[{n:1,name:"Three P's Practice",sub:"Short Italian texts in the present tense. Every answer is checked."},
+            {n:2,name:"Find the Three P's",sub:"Longer Italian texts and sources. The choices are close, and some ask for your reason."},
+            {n:3,name:"Culture Detective",sub:"Italian close to AP level. You read in depth, fix weak claims, write, then hand in."}];
+var FIND=[["f-name","My name",0],["f-topic","My Italian community and topic",0],
+ ["f-prod","A product I found, and where I found it",1],["f-prac","A practice I found, and where I found it",1],
+ ["f-pers","A perspective I found, who said it, and where I found it",1],
+ ["f-link","How does the perspective explain the product or the practice?",1],
+ ["f-bad","One source I did not trust, and why",1],
+ ["f-dis","Something two sources, or two people, disagreed about. Which did I believe, and why?",1],
+ ["f-words","Italian search words that worked for me, and one that did not",1]];
+
+var KEY="see-do-believe-it-v1";
+function newSeed(){return Math.floor(Math.random()*4294967296);}
+function fresh(){return {v:"home",r:{},mc:{},w:{},shown:{},seed:newSeed()};}
+var S=fresh();
+try{var t=JSON.parse(localStorage.getItem(KEY)||"null");if(t&&t.mc){S=t;S.r=S.r||{};S.w=S.w||{};S.shown=S.shown||{};if(typeof S.seed!=="number")S.seed=newSeed();}}catch(e){}
+var canSave=true;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));canSave=true;}catch(e){canSave=false;}
+  var el=document.getElementById("saved");if(el)el.textContent=canSave?"Saved on this device":"Not saved on this device";}
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function act(id){for(var i=0;i<ACTS.length;i++)if(ACTS[i].id===id)return ACTS[i];return null;}
+function otext(o){return Array.isArray(o)?o[0]:o;}
+function idOf(key){return key.replace(/\./g,"-");}
+function qOf(key){var k=key.split("."),A=act(k[0]);return A.rounds[+k[1]].qs[+k[2]];}
+function optsOf(key){var k=key.split("."),A=act(k[0]),R=A.rounds[+k[1]],Q=R.qs[+k[2]];return Q.o||(Q.fixp?PPP:null)||R.opts||A.opts;}
+function hintOf(key){var k=key.split("."),A=act(k[0]),R=A.rounds[+k[1]];return R.hint||A.hint;}
+function isRight(Q,oi){return Q.pick?Q.a.indexOf(oi)>=0:oi===Q.a;}
+function qready(Q,st,key){
+  var has=Q.pick?((st.sel||[]).length===Q.pick):(typeof st.pick==="number");
+  return has&&(!Q.d||(S.w["d-"+key]||"").trim().length>=12);
+}
+
+/* Option order: different on each device, the same every time on one device. */
+function hsh(s){var h=2166136261,i;for(i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function order(key,n){
+  var a=[],i,j,tmp,x=(hsh(key)^S.seed)>>>0;
+  for(i=0;i<n;i++)a.push(i);
+  for(i=n-1;i>0;i--){x=(Math.imul(x,1664525)+1013904223)>>>0;j=(x>>>12)%(i+1);tmp=a[i];a[i]=a[j];a[j]=tmp;}
+  return a;
+}
+
+function progress(a){
+  var total=0,done=0;
+  if(a.type==="mc"){a.rounds.forEach(function(r,ri){r.qs.forEach(function(q,qi){total++;var st=S.mc[a.id+"."+ri+"."+qi];if(st&&st.ok)done++;});});}
+  else if(a.type==="write"){a.items.forEach(function(it){total++;if((S.w[it.id]||"").trim())done++;});}
+  else if(a.type==="find"){FIND.forEach(function(f){total++;if((S.w[f[0]]||"").trim())done++;});}
+  else {total=1;done=S.shown.learned?1:0;}
+  return {total:total,done:done};
+}
+
+function home(){
+  var h='<div class="stack gap-lg"><p class="muted">Products are what people make. Practices are what people do. Perspectives are what people believe. Work through the three stages in order.</p><p class="box soft">On this page the texts are in Italian, and they get longer and harder at each stage. The questions are in English, and you answer in English.</p>';
+  STAGES.forEach(function(st){
+    h+='<section class="stack"><div><div class="eyebrow">Stage '+st.n+'</div><h2>'+esc(st.name)+'</h2><p class="small muted">'+esc(st.sub)+'</p></div>';
+    ACTS.filter(function(a){return a.stage===st.n;}).forEach(function(a){
+      var p=progress(a),full=p.done===p.total;
+      h+='<button type="button" class="card" data-go="'+a.id+'" id="go-'+a.id+'"><span><b>'+esc(a.title)+'</b><span class="small muted">'+esc(a.blurb)+'</span></span><span class="n'+(full?' done':'')+'">'+(full?'Done':p.done+' of '+p.total)+'</span></button>';
+    });
+    h+='</section>';
+  });
+  h+='<section class="box noprint"><h3>Start over</h3><p class="small muted">This erases every answer saved on this device.</p>';
+  h+=S.shown.reset?'<div class="bar"><button type="button" class="btn solid" data-reset="yes">Yes, erase everything</button><button type="button" class="btn quiet" data-reset="no">Cancel</button></div>'
+                  :'<div><button type="button" class="btn quiet" data-reset="ask">Erase my answers</button></div>';
+  h+='</section></div>';
+  return h;
+}
+
+function learn(){
+  return '<div class="stack gap-lg"><h2>Learn the three P\'s</h2>'
+  +'<div class="box"><h3>Product: what you can see</h3><p>Something people make or use. You can point to it.</p><p class="small muted">A homemade pie, a team shirt, a building, a law, a cookbook.</p></div>'
+  +'<div class="box"><h3>Practice: what people do</h3><p>An action, and the way people do it.</p><p class="small muted">Eating Sunday lunch together, shaking hands, volunteering at a fair.</p></div>'
+  +'<div class="box"><h3>Perspective: what people believe</h3><p>A belief or value. It is the reason behind the product or the practice.</p><p class="small muted">"Family comes first." "Neighbors should help each other."</p></div>'
+  +'<div class="box soft"><h3>The quick test</h3><p>Can you touch it? <b>Product.</b><br>Can you watch people do it? <b>Practice.</b><br>Is it the why? <b>Perspective.</b></p></div>'
+  +'<div class="box accent"><h3>They work as a chain</h3><p><b>Product:</b> a handmade quilt for every new baby.<br><b>Practice:</b> the neighbors sew it together.<br><b>Perspective:</b> a child belongs to the whole community.</p><p class="small muted">A strong project does not list the three P\'s. It shows how the belief explains the thing and the action.</p></div>'
+  +'<div class="bar noprint"><button type="button" class="btn solid" data-learned="1">Got it. Next activity</button></div></div>';
+}
+
+function ctxHtml(a,r,ri){
+  var h="";
+  if(r.text) h+='<div class="box soft read">'+(Array.isArray(r.text)?r.text.map(function(p){return '<p>'+esc(p)+'</p>';}).join(''):esc(r.text))+'</div>';
+  if(r.evid) h+='<div class="box soft"><h3>The evidence</h3><ul>'+r.evid.map(function(p){return '<li>'+esc(p)+'</li>';}).join('')+'</ul></div>';
+  if(r.sents) h+='<div class="box read"><h3>The student\'s paragraph</h3><ol>'+r.sents.map(function(p){return '<li>'+esc(p)+'</li>';}).join('')+'</ol></div>';
+  if(r.audio){
+    var k="au-"+a.id+ri;
+    h+='<div class="box soft"><div class="bar"><button type="button" class="btn solid" data-play="'+ri+'">Play</button><button type="button" class="btn quiet" data-stop="1">Stop</button><button type="button" class="btn quiet" data-show="'+k+'">'+(S.shown[k]?'Hide the text':'Show the text')+'</button></div>'
+      +'<p class="small muted" id="au-msg">Try to answer by ear first. If you hear nothing, or the voice is not Italian, show the text and read it.</p>'
+      +(S.shown[k]?'<p class="read">'+esc(r.audio)+'</p>':'')+'</div>';
+  }
+  if(r.pic) h+=PIC+'<p class="small muted">A drawing made for this practice. Via A and Via B are not real places.</p>';
+  if(r.chart){
+    h+='<div class="box soft"><h3>'+esc(r.chart.title)+'</h3><div class="chart">';
+    r.chart.rows.forEach(function(row){h+='<div class="row"><span>'+esc(row[0])+'</span><span class="track"><span class="fill" style="display:block;width:'+row[1]+'%"></span></span><span class="v">'+row[1]+'%</span></div>';});
+    h+='</div><p class="small muted">'+esc(r.chart.note)+' (made up)</p></div>';
+  }
+  if(r.src){
+    h+='<p><b>Topic:</b> '+esc(r.topic)+'</p><div class="src">';
+    r.src.forEach(function(s){h+='<div class="box soft"><h3>'+esc(s[0])+'</h3><p>'+esc(s[1])+'</p></div>';});
+    h+='</div>';
+  }
+  if(r.lead) h+='<p><b>'+esc(r.lead)+'</b></p>';
+  return h;
+}
+
+function mcHtml(a,r,ri){
+  var h='<div class="stack gap-lg">',prev=-1,run=0;
+  r.qs.forEach(function(Q,qi){
+    var key=a.id+"."+ri+"."+qi, idk=idOf(key), st=S.mc[key]||{t:[]}, opts=optsOf(key);
+    var fixed=!Q.o||!!Q.fix, two=!!(Q.d||Q.pick), sel=st.sel||[], ord=[], i, pos;
+    if(fixed){for(i=0;i<opts.length;i++)ord.push(i);}
+    else{
+      ord=order(key,opts.length);
+      if(!Q.pick){
+        pos=ord.indexOf(Q.a);
+        if(pos===prev&&run>=1){ord.push(ord.shift());pos=ord.indexOf(Q.a);}
+        run=(pos===prev)?run+1:0; prev=pos;
+      }
+    }
+    var cls=fixed?(opts.length===3?' three':(opts.length===2?' two':'')):'';
+    h+='<div class="q"><p><b>'+(qi+1)+'.</b> '+esc(Q.q)+'</p>';
+    if(Q.pick) h+='<p class="small muted">Choose '+Q.pick+'. Then press Check.</p>';
+    else if(Q.d) h+='<p class="small muted">Close call. Choose, write your reason, then press Check.</p>';
+    h+='<div class="opts'+cls+'">';
+    ord.forEach(function(oi){
+      var o=opts[oi], tried=st.t.indexOf(oi)>=0, ok=!!st.ok&&isRight(Q,oi);
+      var on=!st.ok&&(Q.pick?sel.indexOf(oi)>=0:st.pick===oi);
+      var attr=two?(Q.pick?'data-tg':'data-pk'):'data-mc';
+      h+='<button type="button" class="opt'+(ok?' ok':'')+(tried?' no':'')+(on?' sel':'')+'" id="o-'+idk+'-'+oi+'" '+attr+'="'+key+'" data-oi="'+oi+'"'
+        +(two?' aria-pressed="'+(on?'true':'false')+'"':'')+((st.ok||tried)?' disabled':'')+'><span>'+esc(otext(o))+'</span>'
+        +(ok?'<span class="tag ok">Correct</span>':(tried?'<span class="tag no">Not yet</span>':(on?'<span class="tag pick">Your choice</span>':'')))+'</button>';
+    });
+    h+='</div>';
+    if(Q.d) h+='<div class="stack"><label for="d-'+idk+'">'+esc(Q.d.label)+'</label><textarea id="d-'+idk+'" class="short" data-w="d-'+key+'" data-gate="'+key+'" rows="3">'+esc(S.w["d-"+key]||"")+'</textarea></div>';
+    if(two&&!st.ok) h+='<div class="noprint"><button type="button" class="btn solid" id="chk-'+idk+'" data-chk="'+key+'"'+(qready(Q,st,key)?'':' disabled')+'>Check my answer</button></div>';
+    if(st.ok){
+      h+='<p class="fb" id="fb-'+idk+'" tabindex="-1" role="status"><b>Correct.</b> '+esc(Q.why)+(Q.d&&Q.d.model?' <b>One way to say it:</b> '+esc(Q.d.model):'')+'</p>';
+    } else if(typeof st.bad==="number"){
+      var last=opts[st.bad], msg=Array.isArray(last)?last[1]:((Q.no&&Q.no[st.bad])||hintOf(key));
+      h+='<p class="fb" id="fb-'+idk+'" tabindex="-1" role="status"><b>Not yet.</b> '+esc(msg)+' Try again.</p>';
+    }
+    h+='</div>';
+  });
+  h+='</div>';
+  return h;
+}
+
+function writeHtml(items){
+  var h='';
+  items.forEach(function(it){
+    h+='<div class="stack"><label for="'+it.id+'">'+esc(it.label)+'</label><textarea id="'+it.id+'" data-w="'+it.id+'" rows="4">'+esc(S.w[it.id]||"")+'</textarea>'
+      +'<div class="noprint"><button type="button" class="btn quiet" data-show="m-'+it.id+'">'+(S.shown["m-"+it.id]?'Hide the model answer':'Show a model answer')+'</button></div>'
+      +(S.shown["m-"+it.id]?'<p class="fb"><b>One possible answer.</b> '+esc(it.model)+'</p>':'')+'</div>';
+  });
+  return h;
+}
+
+function nextBtn(a,ri,n){
+  var idx=ACTS.indexOf(a), nx=ACTS[idx+1], h='<div class="bar noprint">';
+  if(n>1&&ri<n-1) h+='<button type="button" class="btn solid" data-round="'+(ri+1)+'">Next round</button>';
+  else if(nx) h+='<button type="button" class="btn solid" data-go="'+nx.id+'">Next: '+esc(nx.title)+'</button>';
+  h+='<button type="button" class="btn quiet" data-go="home">All activities</button></div>';
+  return h;
+}
+
+function activity(a){
+  if(a.type==="learn") return learn();
+  var st=STAGES[a.stage-1], h='<div class="stack gap-lg"><div><div class="eyebrow">Stage '+st.n+' · '+esc(st.name)+'</div><h2>'+esc(a.title)+'</h2></div><p class="muted">'+esc(a.intro)+'</p>';
+  if(a.type==="mc"){
+    var n=a.rounds.length, ri=Math.min(S.r[a.id]||0,n-1), r=a.rounds[ri];
+    if(n>1){h+='<div class="rounds noprint" aria-label="Rounds">';for(var i=0;i<n;i++)h+='<button type="button" class="btn" id="rd-'+i+'" data-round="'+i+'" aria-pressed="'+(i===ri)+'" aria-label="Round '+(i+1)+'">'+(i+1)+'</button>';h+='</div>';}
+    h+=ctxHtml(a,r,ri)+mcHtml(a,r,ri);
+    if(r.write) h+=writeHtml(r.write);
+    var p=progress(a);h+='<p class="small muted">'+p.done+' of '+p.total+' answered correctly in this activity.</p>'+nextBtn(a,ri,n);
+  } else if(a.type==="write"){
+    h+=writeHtml(a.items)+nextBtn(a,0,1);
+  } else {
+    h+='<div class="box soft"><h3>How to get information</h3><p><b>Products:</b> search the name of the thing plus «storia» or «come si fa». Museums (<i>museo</i>) and official sites help.</p><p><b>Practices:</b> search «tradizione», «sagra», «festa» or «usanza». Videos show practices best.</p><p><b>Perspectives:</b> look for people speaking: «intervista», «testimonianza», «perché è importante», «significato».</p><p class="small muted">Wikipedia is a map. Follow its footnotes to a source you can cite. For every source, note who wrote it, when, and what they gain.</p></div>';
+    FIND.forEach(function(f){
+      h+='<div class="stack"><label for="'+f[0]+'">'+esc(f[1])+'</label>'+(f[2]?'<textarea id="'+f[0]+'" data-w="'+f[0]+'" rows="4">'+esc(S.w[f[0]]||"")+'</textarea>':'<input type="text" id="'+f[0]+'" data-w="'+f[0]+'" value="'+esc(S.w[f[0]]||"")+'">')+'</div>';
+    });
+    h+='<div class="box noprint"><h3>Hand it in</h3><div class="bar"><button type="button" class="btn solid" data-copy="1">Copy my work</button><button type="button" class="btn quiet" data-print="1">Print</button></div>'
+      +'<p class="small muted" id="copy-msg">Copy puts everything you wrote, in all three stages, on the clipboard so you can paste it into Google Classroom. If Print does nothing here, use Copy.</p>'
+      +(S.shown.copyout?'<label for="copy-out">Select all of this text and copy it</label><textarea id="copy-out" readonly>'+esc(workText())+'</textarea>':'')+'</div>';
+    h+='<div class="bar noprint"><button type="button" class="btn quiet" data-go="home">All activities</button></div>';
+  }
+  return h+'</div>';
+}
+
+function workText(){
+  var L=["See, Do, Believe Italiano · my work",""];
+  FIND.forEach(function(f){L.push(f[1]+":",(S.w[f[0]]||"(blank)"),"");});
+  L.push("Build the chain","");
+  act("chain").items.forEach(function(it){L.push(it.label,(S.w[it.id]||"(blank)"),"");});
+  var pw=S.w["pic-w"];if(pw){L.push("Read a picture",pw,"");}
+  L.push("My reasons on the close calls","");
+  ACTS.forEach(function(a){
+    if(a.type!=="mc")return;
+    a.rounds.forEach(function(r,ri){r.qs.forEach(function(Q,qi){
+      if(!Q.d)return;
+      var key=a.id+"."+ri+"."+qi, st=S.mc[key]||{t:[]};
+      L.push(a.title+": "+Q.q,"Wrong tries before the right answer: "+(st.ok?st.t.length:"not finished"),"My reason: "+(S.w["d-"+key]||"(blank)"),"");
+    });});
+  });
+  L.push("© Assunta Scotto · See, Do, Believe Italiano");
+  return L.join("\n");
+}
+
+function render(focusId){
+  var a=act(S.v);
+  document.getElementById("app").innerHTML=a?activity(a):home();
+  document.getElementById("home-btn").hidden=!a;
+  save();
+  if(focusId){var el=document.getElementById(focusId);if(el){try{el.focus({preventScroll:true});}catch(e){}}}
+}
+function go(v){try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}S.v=act(v)?v:"home";render();try{window.scrollTo(0,0);}catch(e){}}
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest?e.target.closest("button"):null; if(!b) return;
+  var d=b.dataset, a=act(S.v), key, Q, st, oi, sel, i, wrong;
+  if(b.id==="home-btn"){go("home");return;}
+  if(d.go){go(d.go);return;}
+  if(d.learned){S.shown.learned=true;go("sort");return;}
+  if(d.round!==undefined&&a){S.r[a.id]=parseInt(d.round,10);go(a.id);return;}
+  if(d.mc){
+    key=d.mc; Q=qOf(key); oi=+d.oi; st=S.mc[key]||{t:[]};
+    if(oi===Q.a){st.ok=true;} else {if(st.t.indexOf(oi)<0)st.t.push(oi);st.bad=oi;}
+    S.mc[key]=st; render(st.ok?"o-"+idOf(key)+"-"+Q.a:"fb-"+idOf(key)); return;
+  }
+  if(d.pk){
+    key=d.pk; oi=+d.oi; st=S.mc[key]||{t:[]};
+    if(st.ok||st.t.indexOf(oi)>=0)return;
+    st.pick=oi; S.mc[key]=st; render("o-"+idOf(key)+"-"+oi); return;
+  }
+  if(d.tg){
+    key=d.tg; Q=qOf(key); oi=+d.oi; st=S.mc[key]||{t:[]};
+    if(st.ok)return;
+    sel=st.sel||[]; i=sel.indexOf(oi);
+    if(i>=0)sel.splice(i,1); else {if(sel.length>=Q.pick)sel.shift();sel.push(oi);}
+    st.sel=sel; S.mc[key]=st; render("o-"+idOf(key)+"-"+oi); return;
+  }
+  if(d.chk){
+    key=d.chk; Q=qOf(key); st=S.mc[key]||{t:[]};
+    if(st.ok||!qready(Q,st,key))return;
+    if(Q.pick){
+      wrong=(st.sel||[]).filter(function(x){return Q.a.indexOf(x)<0;});
+      if(!wrong.length){st.ok=true;} else {st.bad=wrong[0];st.n=(st.n||0)+1;}
+    } else if(st.pick===Q.a){st.ok=true;}
+    else {if(st.t.indexOf(st.pick)<0)st.t.push(st.pick);st.bad=st.pick;st.pick=null;}
+    S.mc[key]=st; render("fb-"+idOf(key)); return;
+  }
+  if(d.show){S.shown[d.show]=!S.shown[d.show];render();return;}
+  if(d.play!==undefined&&a){
+    var msg=document.getElementById("au-msg");
+    try{
+      if(!window.speechSynthesis||!window.SpeechSynthesisUtterance) throw new Error("none");
+      window.speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(a.rounds[+d.play].audio);u.lang="it-IT";u.rate=0.85;
+      window.speechSynthesis.speak(u);
+    }catch(x){if(msg)msg.textContent="This device cannot read aloud here. Press \"Show the text\" and read it instead.";}
+    return;
+  }
+  if(d.stop){try{window.speechSynthesis.cancel();}catch(x){}return;}
+  if(d.reset){
+    if(d.reset==="ask"){S.shown.reset=true;}
+    else if(d.reset==="no"){S.shown.reset=false;}
+    else{S=fresh();}
+    render();return;
+  }
+  if(d.copy){
+    var txt=workText(), m=document.getElementById("copy-msg");
+    var fail=function(){S.shown.copyout=true;render("copy-out");var o=document.getElementById("copy-out");if(o){try{o.select();}catch(x){}}};
+    try{navigator.clipboard.writeText(txt).then(function(){if(m)m.textContent="Copied. Paste it into Google Classroom.";},fail);}catch(x){fail();}
+    return;
+  }
+  if(d.print){try{window.print();}catch(x){}return;}
+});
+document.addEventListener("input",function(e){
+  var ds=e.target&&e.target.dataset?e.target.dataset:null, k=ds?ds.w:null; if(!k) return;
+  S.w[k]=e.target.value; save();
+  if(ds.gate){
+    var c=document.getElementById("chk-"+idOf(ds.gate));
+    if(c){try{c.disabled=!qready(qOf(ds.gate),S.mc[ds.gate]||{t:[]},ds.gate);}catch(x){}}
+  }
+});
+render();
+})();
+</script>
+</body>
+</html>

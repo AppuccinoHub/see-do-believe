@@ -6,4 +6,6 @@ An all-English practice app for the three P's of culture: products, practices an
 
 Open it: https://appuccinohub.github.io/see-do-believe/
 
+Italian-texts version: https://appuccinohub.github.io/see-do-believe/italiano.html
+
 All rights reserved. This work may not be copied, sold or presented as someone else's without written permission from Assunta Scotto. Human- and AI-driven work directed by Assunta Scotto.
